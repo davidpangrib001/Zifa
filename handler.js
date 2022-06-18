@@ -638,7 +638,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply('Memakai' + m.limit + ' Limit')
+                        if (m.limit) m.reply('Memakai' + + m.limit + ' Limit')
                     }
                     break
                 }
