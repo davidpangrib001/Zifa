@@ -527,35 +527,35 @@ const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fro
             hydratedFooterText: wm2, 
             hydratedButtons: [{
             urlButton: {
-               displayText: '🔮ISTAGRAM🔮',
+               displayText: '𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺',
                url: webm
              }
 
            },
              {
              urlButton: {
-               displayText: '🎮GROUP BOT🎮', 
+               displayText: '𝗕𝗲𝗿𝗴𝗮𝗯𝘂𝗻𝗴 𝗞𝗲 𝗚𝗿𝘂𝗽 𝗕𝗼𝘁', 
                url: gc
              }
 
            },
                {
              quickReplyButton: {
-               displayText: '🐤CREATOR BOT🐤',
-               id: '.owner',
+               displayText: '𝖯𝖾𝗆𝗂𝗅𝗂𝗄 𝖡𝗈𝗍',
+               id: '!owner',
              }
 
            },
                {
              quickReplyButton: {
-        displayText: '🪀SEWABOT🪀',
+        displayText: '𝖲𝖾𝗐𝖺 𝖡𝗈𝗍',
                id: '.sewazifa',
              }
 
            },
            {
              quickReplyButton: {
-               displayText: ' 💌YANG SUDAH MEMBANTU BOT💌',
+               displayText: '𝖢𝗈𝗇𝗍𝗋𝗂𝖻𝗎𝗍𝗈𝗋𝗌',
                id: '.tqto',
              }
            }]
@@ -573,9 +573,9 @@ const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fro
     throw e
   }
 }
-handler.help = ['Krizyn']
+handler.help = ['menu']
 handler.tags = ['main']
-handler.command = /^(alive|panel|krizyn|zifa|menu|help|\?)$/i
+handler.command = /^(menu|help|\?)$/i
 handler.register = true
 handler.owner = false
 handler.mods = false
