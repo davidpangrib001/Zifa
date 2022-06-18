@@ -10,7 +10,7 @@ let handler = async function (m, { text, usedPrefix }) {
   if (!age) throw 'Umur tidak boleh kosong (Angka)'
   age = parseInt(age)
   if (age > 90) throw 'Umur terlalu tua'
-  if (age < 3) throw 'Bayi bisa ngetik sesuai format bjir ._.'
+  if (age < 5) throw 'Bayi bisa ngetik sesuai format bjir ._.'
   user.name = name
   user.age = parseInt(age)
   user.regTime = + new Date
@@ -19,19 +19,27 @@ let handler = async function (m, { text, usedPrefix }) {
   user.serial = sn
   
   m.reply(`
-╭─❒ 〔 DAFTAR BERHASIL 〕
-❍ Terimakasih anda sudah terdaftar
-❍ Di database kami
-╭─────────────────╮
-├❏ Nama : ${name}
-├❏ Umur : ${age} tahun
-├❏ SN: ${sn}
-╰─────────────────╯
-Gunakan Bot Secukupnya
-Dont Call/Vc Bot 
+┏──『 *Register* 』──⬣
+│⬡ Nomormu Sudah Di Daftar Ke Database Bot
+┗──────────⬣
+✓ *INFO*
+*╭─────────────────╮*
+*├❏* Nama : *${name}*
+*├❏* Umur : *${age}* Tahun
+*├❏* SN: *${sn}*
+*╰─────────────────╯*
+
+┏━━〔 Rules 〕━ꕥ
+┃✾ *Jangan Spam Bot*
+┃✾ *Jangan Telepon / VC Bot*
+┃✾ *Minta B0K3P? Banned + Block!*
+┃✾ *Minta Script Bot? Chat Owner*
+┃✾ *Virtex? Janganlah.. Bukan Bot War..*
+┗━━━━━━━━ꕥ
+Jika Kamu Melanggar Rules, Owner Akan Kasih Kejutan Buat Kamu 👻
 `.trim())
-u = '╭─❒ 〔 HALLO NEW PREN 〕\n\n❍ Jika mau ke Pengaturan Bot Klik Tombol "Rules Bot"\n❍ Jika menuju menu Klik tombol "Tampilan Menu"\n❍ Jika mau cari owner Klik tombol "Owner"\n\nPatuhi Rules nya,demi kenyamanan kita bersama.'
-await conn.send3But(m.chat, u, wm, 'Merespon', '#ping', 'Menu', '#menu', 'Owner', '#owner',  m)
+u = 'Hai, ${name}, Silahkan Pilih Tombol Di Bawah Ini\n_Patuhi Rules Demi Kenyamanan Kita Semua_'
+await conn.send3But(m.chat, u, wm, 'Ping\n_Mengetes Kecepatan Respon Bot_', '#ping', 'Menu\n_Menampilkan Menu Bot_', '#menu', 'Owner\n_Pemilik Bot_', '#owner',  m)
 }
 handler.help = ['daftar', 'reg', 'register'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['exp']
