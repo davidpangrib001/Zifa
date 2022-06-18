@@ -3,11 +3,11 @@ let handler = async (m, { conn }) => {
     let uptime = clockString(_uptime)
 
 m.reply(`
-⊙──❲ R U N T I M E 〕
-│ 
-├⊙ Zifabotz Aktif Selama ${uptime}
+┏──⊙『 RUNTIME 』
 │
-⊙──────
+│⬡ One Botz Aktif Selama ${uptime}
+│
+┗──────────⊙
     `)
 }
 handler.help = ['runtime']
