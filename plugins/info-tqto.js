@@ -7,17 +7,17 @@
 let handler = async (m, { conn }) => {
 bear = "Source Code"
 let esce = `
-BIG THANKS TO
+▄ *Big Thanks To*
 
-⤿ Nurutomo
+☆ Nurutomo
     📮 https://github.com/Nurutomo
-⤿ Elyas
+⬣ Elyas
     📮 https://github.com/Paquito1923
-⤿ Hyzer Official
+ꕥ Hyzer Official
     📮 https://github.com/Hyzerr
-⤿ Krizyn Ofc
+✾ Krizyn Ofc
     📮 https://github.com/krizynofc
-⤿ Zifabotz_offc1
+⬡ Zifabotz_offc1
     📮 https://github.com/Botynyakamu
     
 THANKS PARA DONASI YANG TERHORMAT
