@@ -1,21 +1,9 @@
-let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
-let text = `『 SCRIPT 』\n*Original* :\n- Private\n\n*Base* :\n- https://github.com/Nurutomo/wabot-aq`
-const templateButtons = [
-    {index: 1, urlButton: {displayText: '🐈 My Istagram 🐈', url: web}},
-    {index: 2, urlButton: {displayText: '🌎 Official Group 🌎', url: gc}},
-    {index: 3, quickReplyButton: {displayText: 'Menu', id: '.menu'}},
-    {index: 4, quickReplyButton: {displayText: 'Donasi', id: '.donasi'}},
-]
-let tm = {
-text: text,
-footer: global.wm,
-templateButtons: templateButtons,
-image: thumb
-}
-conn.sendMessage(m.chat, tm, m)
-}
-handler.help = ['sc']
+let fetch = require('node-fetch')
+let handler = async (m, { conn }) => conn.sendButtonLoc(m.chat, await (await fetch(fla + 'SCRIPT')).buffer(), `
+SCRIPT BOT
+`.trim(), 'Base :\n*•* https://github.com/Nurutomo\n\nRecode :\n*•* By Me 👻', '#owner')
+handler.help = ['sourcecode']
 handler.tags = ['info']
-handler.command = /^(s(ourcode|c))$/i
+handler.command = /^(sourcecode|sc|scbot|script|github)$/i
 
-export default handler
+module.exports = handler
