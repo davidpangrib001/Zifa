@@ -63,7 +63,7 @@ loadDatabase()
 // if (opts['cluster']) {
 //   require('./lib/cluster').Cluster()
 // }
-global.authFile = `${opts._[0] ? opts._[0] + '_' : ''}session.data.json`
+global.authFile = `${opts._[0] ? opts._[0] + '_' : ''}session.json`
 global.isInit = !fs.existsSync(authFile)
 const { state, saveState } = useSingleFileAuthState(global.authFile)
 
