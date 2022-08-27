@@ -1,72 +1,20 @@
-let fs from 'fs'
-
-let cheerio from 'cheerio'
-
-let fetch from 'node-fetch'
-
-let FormData from 'form-data'
+import uploadFile from '../lib/uploadFile.js'
+import uploadImage from '../lib/uploadImage.js'
 
 let handler = async (m) => {
-
-	let q = m.quoted ? m.quoted : m	let mime = q.mediaType || ''
-
-	if (/image|video|audio|sticker|document/.test(mime)) {
-
-		let media = await q.download(true)
-
-		let data = await uploadFile(media)
-
-		m.reply(data.url)
-		m.reply('Upload Gambar Bisa Kamu Lakukan Di Website :\nhttps://uploader-one-botz.herokuapp.com')
-
-	} else throw 'Kirim atau reply media dengan caption :\n.tourl atau .upload'
-
+  let q = m.quoted ? m.quoted : m
+  let mime = (q.msg || q).mimetype || ''
+  if (!mime) throw 'No media found'
+  let media = await q.download()
+  let isTele = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
+  let link = await (isTele ? uploadImage : uploadFile)(media)
+  m.reply(`📮 *L I N K :*
+${link}
+📊 *S I Z E :* ${media.length} Byte
+📛 *E x p i r e d :* ${isTele ? 'No Expiry Date' : 'Unknown'}`)
 }
-
-handler.help = ['tourl']
-
+handler.help = ['upload (reply media)', 'tourl (reply media)']
 handler.tags = ['tools']
+handler.command = /^(tourl|upload)$/i
 
-handler.command = /^(upload|tourl)$/i
-
-module.exports = handler
-
-async function uploadFile(path) {
-
-	let form = new FormData()
-
-	form.append('file', fs.createReadStream(path))
-
-	let res = await (await fetch('https://api.anonfiles.com/upload', {
-
-		method: 'post',
-
-		headers: {
-
-			...form.getHeaders()
-
-		},
-
-		body: form
-
-	})).json()
-
-	await fs.promises.unlink(path)
-
-	if (!res.status) throw res.error.message
-
-	let data = await fetch(res.data.file.url.full)
-
-	let $ = cheerio.load(await data.text())
-
-	return {
-
-		url: await shortUrl($('#download-url').attr('href')),
-
-		url2: res.data.file.url.short
-
-	}
-
-}
-
-async function shortUrl(url) {
+export default handler
